@@ -1,0 +1,103 @@
+<app-navbar></app-navbar>
+<div class="container">
+  <div class="row justify-content-center">
+      <div class="col-md-6">
+  <div class="admin_area">
+    <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+      <h2>Update User Data</h2>
+      <hr class="formhr">
+      <div *ngIf="show" class="alert alert-success">
+          Done!Your request execute successfully.
+      </div>
+      <div *ngIf="errorshow" class="alert alert-danger">
+        <p>Oops!!There are some problem,contact with your admin.</p>
+      </div>
+      <div *ngIf="duplicatedata" class="alert alert-danger">
+          <p>Oops!!The username must be unique.</p>
+        </div>
+      <div class="form-group">
+        <label for="firstname">First Name:</label>
+        <input type="text" class="form-control" id="firstname" value="this.firstname" required name="firstname" placeholder="User First Name"  [(ngModel)]="firstname" #firstnameCtrl="ngModel" >
+        <div *ngIf="!firstnameCtrl.valid && firstnameCtrl.touched">
+          <div *ngIf="firstnameCtrl.errors.required">
+            <p class="formerror">*We Need this Field.</p>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+          <label for="lastname">Last Name:</label>
+          <input type="text" class="form-control" id="lastname"  value="this.lastname" required name="lastname" placeholder="User Last Name"  [(ngModel)]="lastname" #lastnameCtrl="ngModel" >
+          <div *ngIf="!lastnameCtrl.valid && lastnameCtrl.touched">
+            <div *ngIf="lastnameCtrl.errors.required">
+              <p class="formerror">*We Need this Field.</p>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="location">Location:</label>
+          <input type="text" class="form-control" required name="location" value="this.location" placeholder="User Location" [(ngModel)]="location" #locationCtrl="ngModel" >
+          <div *ngIf="!locationCtrl.valid && locationCtrl.touched">
+            <div *ngIf="locationCtrl.errors.required">
+              <p class="formerror">*We Need this Field.</p>
+            </div>
+          </div>
+        </div> 
+      <button 
+      type="submit" 
+      class="btn btn-lg btn-success btn-block" 
+      name="updatedata" 
+      value="Update"
+      >
+      <i class="fas fa-users"></i> Update Data</button>
+      
+    </form>
+  </div>
+  </div>
+  </div>
+  <hr>
+  <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="mydatatable">
+
+  <table id="admindashboard" class="table table-striped table-bordered" datatable [dtOptions]="dtOptions" style="width:100%">
+      <thead>
+        <tr>
+            <th>Name</th>
+            <th>Username</th>
+            <th>Password</th>
+            <th>Location</th>
+            <th>Action</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+    <tbody >
+        <tr *ngFor="let item of getalluserdata">
+            <td>{{item.firstname}} {{item.lastname}}</td>
+            <td>{{item.username}}</td>
+            <td>{{item.password}}</td>
+            <td>{{item.location}}</td>
+            <td><button type="button"  class="btn btn-success" (click)="updateuser(item)">
+                Update</button></td>
+                <td><button type="button"  class="btn btn-danger" (click)="deleteuser(item)">
+                  Delete</button></td>
+          </tr>
+    </tbody>
+     <tfoot>
+        <tr>
+          <th>Name</th>
+          <th>Username</th>
+          <th>Password</th>
+          <th>Location</th>
+          <th>Action</th>
+          <th>Delete</th>
+        </tr>
+    </tfoot>
+    </table>
+                
+  </div>
+</div>
+</div>
+</div>
+<!-- <app-footer></app-footer> -->
+
+

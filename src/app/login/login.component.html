@@ -1,0 +1,41 @@
+<div class="container-fluid col-md-5 col-sm-4">
+  <div class="jumbotron">
+    <div class="admin_area">
+      <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+        <h2>Login panel </h2>
+        <hr class="formhr">
+        <div *ngIf="show" class="alert alert-danger">
+          Oops!Wrong username or password.
+        </div>
+        <div class="form-group">
+          <label class="formlabel" for="username">User Name:</label>
+          <input type="text" class="form-control" required name="uname" placeholder="Your Username" [(ngModel)]="uname" #unameCtrl="ngModel" >
+          <div *ngIf="!unameCtrl.valid && unameCtrl.touched">
+            <div *ngIf="unameCtrl.errors.required">
+              <p class="formerror">*We Need this Field.</p>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="formlabel" for="password">Your Password:</label>
+          <input type="password" class="form-control" placeholder="Your Password" required name="upass" [(ngModel)]="upass" #passCtrl="ngModel">
+          <div *ngIf="!passCtrl.valid && passCtrl.touched">
+            <div *ngIf="passCtrl.errors.required" class="error">
+              <p class="formerror">*We Need this Field.</p>
+            </div>
+          </div>
+        </div>
+        <button 
+        type="submit" 
+        class="btn btn-lg btn-primary btn-block" 
+        name="submtime" 
+        value="Sign In"
+        [disabled]="!f.valid">
+        <i class="fas fa-door-open"></i>Log In</button>
+        
+      </form>
+    </div>
+  </div>
+
+  </div>
+ 

@@ -1,0 +1,85 @@
+<app-navbar></app-navbar>
+<div class="container">
+  <h2>My Dashboard</h2>
+  <hr>
+  <div class="row justify-content-center">
+  <div *ngIf="show" class="alert alert-success">
+      The deletation process has finished successfully.
+     </div>
+     <div *ngIf="errorshow" class="alert alert-danger">
+       Oops!Wrong username or password.
+     </div>
+
+     <div class="col md-6 dashboardtablecontrol">
+      <table id="admindashboard" datatable [dtTrigger]="dtTrigger" datatable [dtOptions]="dtOptions" class="table  table-bordered table-responsive-md hover">
+        <thead>
+          <tr>
+              <th>Image Tag</th>
+              <th>Date</th>
+              <th>Time</th>
+              <th>Uploaded by</th>
+              <th>Show Details</th>
+              <th>Download</th>
+              <th>Delete</th>
+        </tr>
+      </thead>
+      <tbody >
+          <tr *ngFor="let item of users$" >
+              <td>{{item.image_name}}</td>
+              <td>{{item.syncdate}}</td>
+              <td>{{item.synctime}}</td>
+              <td>{{item.username}}</td>
+              <td><button type="button" class="btn btn-success" (click)="displaydata(item)" data-toggle="modal" data-target="#certificateModal">Details</button></td>
+              <td><button type="button" class="btn btn-warning" (click)="download(item)">Download</button></td>
+              <td><button type="button" class="btn btn-danger" (click)="deleteitem(item)">Delete</button></td>
+            </tr>
+      </tbody>
+       <tfoot>
+        <tr>
+          <th>Image Tag</th>
+          <th>Date</th>
+          <th>Time</th>
+          <th>Uploaded by</th>
+          <th>Show Details</th>
+          <th>Download</th>
+          <th>Delete</th>
+      
+      </tr>
+      </tfoot>
+      </table>
+     </div>
+
+      
+  </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="certificateModal" tabindex="-1" role="dialog" aria-labelledby="certificateModalTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="certificateModalLongTitle">Details Data</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+           
+             <table  *ngFor="let item of this.getcertificatedataformodal">
+              <tr class="certificatetr"><td><p class="certificatedata">
+                <img src="{{item.image_path}}" class="img-fluid">
+              </p></td></tr>
+                <tr class="certificatetr"><td>Image Tag: <p class="certificatedata">{{item.image_name}}</p></td></tr>
+                <tr class="certificatetr"><td>Description: <p class="certificatedata">{{item.image_desc}}</p></td></tr> 
+                <tr class="certificatetr"><td>Uploaded By: <p class="certificatedata">{{item.username}}</td></tr> 
+                <tr class="certificatetr"><td>Uploaded Date: <p class="certificatedata">{{item.syncdate}}</p></td></tr> 
+                <tr class="certificatetr"><td>Uploaded Time: <p class="certificatedata">{{item.synctime}}</p></td></tr> 
+             </table>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            
+          </div>
+        </div>
+      </div>
+      </div>
+  </div>

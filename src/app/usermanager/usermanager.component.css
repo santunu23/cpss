@@ -1,0 +1,84 @@
+body{
+    margin: 0;
+    padding:0;
+    filter: blur(8px);
+    
+}
+
+hr{
+    background-color:red;
+}
+
+
+h2{
+    color: white;
+}
+.form-group label{
+    color:white;
+}
+.table{
+  font-family: 'Roboto', sans-serif;
+  max-width: 40%;
+  
+}
+.formerror{
+    color:red;
+    padding-left: 1rem;
+}
+
+@media (min-width: 320px) {  
+    h2{
+        font-size: 2rem;
+        font-family: 'Lato', sans-serif;
+        font-weight: 300;
+        text-align: center;
+        padding-top: 1rem;
+    }
+   
+    
+   }
+
+
+
+
+
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) {  
+    h2{
+        font-size: 2rem;
+        font-family: 'Lato', sans-serif;
+        font-weight: 300;
+        text-align: center;
+        padding-top: 1rem;
+    }
+   
+    
+   }
+ 
+/* Medium devices (tablets, 768px and up) The navbar toggle appears at this breakpoint */
+@media (min-width: 768px) {  
+ 
+}
+ 
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) { 
+ 
+}
+ 
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {  
+    
+}
+ 
+ 
+ 
+/*
+::::::::::::::::::::::::::::::::::::::::::::::::::::
+Custom media queries
+*/
+ 
+/* Set width to make card deck cards 100% width */
+@media (max-width: 950px) { 
+ 
+}

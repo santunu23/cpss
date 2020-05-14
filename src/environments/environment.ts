@@ -3,7 +3,8 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  commonurl: "https://progotitravelandtourism.com/Android%20Upload%20Image/webapp.php"
 };
 
 /*
